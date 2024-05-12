@@ -12,7 +12,7 @@ public class merge_Sort {
         int j = 0;
         int k = l;
         while(i < n1 && j < n2){
-            if(array_n1[i] <= array_n2[j]){
+            if(array_n1[i] < array_n2[j]){
                 array[k++] = array_n1[i++];
             }
             else {
