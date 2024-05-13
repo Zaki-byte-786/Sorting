@@ -6,6 +6,27 @@ public class sorting_Problem_2 {
         array[x] = array[y];
         array[y] = temp;
     }
+    static void question_3_alternateMethod(int[] array ){
+        int count_0 = 0,count_1 = 0,count_2 = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == 0)count_0++;
+            else if (array[i] == 1) count_1++;
+            else count_2++;
+        }
+        int i = 0;
+        while (count_0>0){
+            array[i++] = 0;
+            count_0--;
+        }
+        while (count_1 > 0){
+            array[i++] = 1;
+            count_1--;
+        }
+        while (count_2 > 0){
+            array[i++] = 2;
+            count_2--;
+        }
+    }
     static void question_3(int [] array){
         int low = 0;
         int mid = 0;
@@ -67,6 +88,8 @@ question_1(array);
         question_2(array_2);
         System.out.println(Arrays.toString(array_2));
         question_3(array_3);
+        System.out.println(Arrays.toString(array_3));
+        question_3_alternateMethod(array_3);
         System.out.println(Arrays.toString(array_3));
     }
 }
