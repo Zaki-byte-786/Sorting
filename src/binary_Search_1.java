@@ -4,7 +4,7 @@ public class binary_Search_1 {
         int end = array.length-1;
         int mid ;
         while (start <= end){
-        mid = start + (end - start) / 2;
+            mid = start + (end - start) / 2;
 
             if (target == array[mid]) {
                 return mid;
@@ -22,7 +22,7 @@ public class binary_Search_1 {
         int ans = -1;
         int end = array.length-1;
         while (start <= end){
-        int mid = start + (end - start) / 2 ;
+            int mid = start + (end - start) / 2 ;
             if (array[mid] == target){
                 ans = mid;
                 end = mid - 1;
@@ -34,6 +34,16 @@ public class binary_Search_1 {
             }
         }
         return ans;
+    }
+    static int firstOccurenceIndex_Alternate(int [] array,int target){
+        int start = 0,end = array.length-1;
+        while (start <= end){
+            int mid = start + (end - start) / 2;
+            if (array[mid] == target && (mid == 0 || array[mid-1] != target))return mid;
+            else if (array[mid] > target) end = mid - 1;
+            else start = mid + 1;
+        }
+        return -1;
     }
     static int lastOccurenceIndex(int [] array,int target){
         int start = 0;
@@ -53,21 +63,30 @@ public class binary_Search_1 {
         }
         return ans;
     }
+    static int lastOccurenceIndex_Alternate(int [] array,int target){
+        int start = 0,end = array.length - 1;
+        while (start <= end){
+            int mid = start + (end - start) / 2;
+            if (array[mid] == target && (mid == array.length-1 || array[mid+1] != target)) return mid;else if (array[mid] > target) end = mid - 1;
+            else start = mid + 1;
+        }
+        return -1;
+    }
     static int recursiveBinarySearch(int [] array,int target,int start,int end){
-       while (start <= end){
-        int mid = start + (end - start) / 2;
-           if (target == array[mid]){
-               return mid;
-           } else if (target > array[mid]) {
-               return recursiveBinarySearch(array,target,mid+1,end);
-           } else if (target < array[mid]) {
-               return recursiveBinarySearch(array,target,start,mid-1);
-           }
-       }
-return -1;
+        while (start <= end){
+            int mid = start + (end - start) / 2;
+            if (target == array[mid]){
+                return mid;
+            } else if (target > array[mid]) {
+                return recursiveBinarySearch(array,target,mid+1,end);
+            } else if (target < array[mid]) {
+                return recursiveBinarySearch(array,target,start,mid-1);
+            }
+        }
+        return -1;
     }
 
-static int squareRoot(int x){
+    static int squareRoot(int x){
         int ans = -1;
         int start = 0;
         int end = x;
@@ -85,16 +104,17 @@ static int squareRoot(int x){
             }
         }
         return ans;
-}
+    }
     public static void main(String[] args) {
         int [] array = {1,2,4,5,6,7,8,11,13,154};
         System.out.println(basicBinarySearch(array,154));
         System.out.println(recursiveBinarySearch(array,3,0,9));
         int [] firstOccurence = {1,5,5,5,6,6,7,7,7,8,8,8,8,8,9};
-      int result =  firstOccurenceIndex(firstOccurence,8);
+        int result =  firstOccurenceIndex(firstOccurence,8);
         System.out.println(result);
-         result =  lastOccurenceIndex(firstOccurence,8);
+        result =  lastOccurenceIndex(firstOccurence,8);
         System.out.println(result);
         System.out.println(squareRoot(34));
     }
 }
+
