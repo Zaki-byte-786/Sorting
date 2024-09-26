@@ -18,6 +18,23 @@ public class count_Sort {
 //        }
 //    }
 
+//    the below method can sort the array but it will not retain the stablility property
+
+//static void basicCountSort(int[] array){
+//        int max = findMax(array);
+//        int [] count = new int[max+1];
+//    for (int i = 0; i < array.length; i++) {
+//        count[array[i]]++;
+//    }
+//    int k = 0;
+//    for (int i = 0; i < count.length; i++) {
+//        for (int j = 0; j < count[i]; j++) {
+//            array[k++] = i;
+//        }
+//    }
+//}
+
+
     public static void main(String[] args) {
         int [] array = {4,3,1,5,3,1,3,5};
 //        countArrayMethod(array);
